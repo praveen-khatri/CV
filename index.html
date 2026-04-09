@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Praveen Khatri | Plant Scientist</title>
+  <meta name="description" content="Academic website of Praveen Khatri, plant scientist working on plant specialized metabolism, cytochrome P450 enzymes, glyceollin biosynthesis, and natural product pathways." />
+  <style>
+    :root{
+      --bg:#071319;
+      --bg2:#0c2028;
+      --card:rgba(10,28,36,.76);
+      --card2:rgba(10,30,40,.92);
+      --text:#edf8fb;
+      --muted:#b5cdd4;
+      --line:rgba(255,255,255,.08);
+      --accent:#50d4b6;
+      --accent2:#6aa8ff;
+      --accent3:#b3fff3;
+      --shadow:0 24px 70px rgba(0,0,0,.32);
+      --max:1180px;
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(106,168,255,.15), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(80,212,182,.15), transparent 30%),
+        radial-gradient(circle at 30% 85%, rgba(179,255,243,.08), transparent 26%),
+        linear-gradient(180deg,#041015 0%,#071319 36%,#09171e 100%);
+      overflow-x:hidden;
+    }
+    body::before, body::after{
+      content:"";
+      position:fixed;
+      width:34rem;height:34rem;border-radius:50%;
+      filter:blur(90px);pointer-events:none;z-index:-1;opacity:.22;
+      animation: floatBlob 18s ease-in-out infinite;
+    }
+    body::before{top:-11rem;right:-8rem;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+    body::after{bottom:-12rem;left:-10rem;background:linear-gradient(135deg,var(--accent2),var(--accent3));animation-delay:-9s}
+    @keyframes floatBlob{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,2rem,0) scale(1.08)}}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(calc(100% - 2rem), var(--max));margin:0 auto}
+    .nav-wrap{
+      position:sticky;top:0;z-index:100;
+      background:rgba(4,15,20,.56);backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.06)
+    }
+    nav{
+      min-height:74px;display:flex;align-items:center;justify-content:space-between;gap:1rem
+    }
+    .brand{display:flex;flex-direction:column;gap:.18rem}
+    .brand strong{font-size:1rem;letter-spacing:.02em}
+    .brand span{color:var(--muted);font-size:.84rem}
+    .nav-links{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+    .nav-links a{
+      color:var(--muted);padding:.66rem .9rem;border-radius:999px;font-size:.94rem;transition:.25s ease
+    }
+    .nav-links a:hover,.nav-links a:focus{color:var(--text);background:rgba(255,255,255,.06)}
+    .hero{padding:5.7rem 0 2.8rem}
+    .hero-grid{display:grid;grid-template-columns:1.22fr .86fr;gap:1.4rem}
+    .glass,.card,.timeline-item,.accordion{
+      background:linear-gradient(180deg, rgba(13,35,45,.86), rgba(8,26,33,.82));
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      position:relative;
+      overflow:hidden;
+    }
+    .glass::before,.card::before,.timeline-item::before,.accordion::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(135deg, rgba(255,255,255,.08), transparent 36%, transparent 70%, rgba(179,255,243,.05));
+      pointer-events:none
+    }
+    .hero-card{padding:2.5rem}
+    .hero-side{padding:2rem;display:grid;gap:1rem;align-content:start}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:.5rem;padding:.52rem .84rem;border-radius:999px;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+      color:var(--accent3);font-size:.86rem;margin-bottom:1.1rem
+    }
+    h1{
+      margin:0 0 1rem;
+      font-size:clamp(2.7rem,5vw,4.9rem);
+      line-height:.98;
+      letter-spacing:-.045em
+    }
+    .gradient-text{
+      background:linear-gradient(135deg,#fff 5%,#cffdf3 40%,#79b7ff 95%);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .hero p{margin:0;color:var(--muted);font-size:1.05rem;line-height:1.8}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:1.55rem}
+    .btn,.toggle-btn{
+      border:none;cursor:pointer;
+      display:inline-flex;align-items:center;gap:.55rem;
+      padding:.92rem 1.22rem;border-radius:999px;font-weight:700;letter-spacing:.01em;
+      transition:transform .25s ease, background .25s ease, border-color .25s ease, opacity .25s ease
+    }
+    .btn:hover,.toggle-btn:hover{transform:translateY(-2px)}
+    .btn-primary,.toggle-btn{
+      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      color:#06212b;box-shadow:0 14px 32px rgba(80,212,182,.2)
+    }
+    .btn-secondary{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:var(--text)
+    }
+    .tag-row,.meta-tags{display:flex;flex-wrap:wrap;gap:.55rem}
+    .tag{
+      padding:.45rem .72rem;border-radius:999px;background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);font-size:.88rem;color:#d6ecee
+    }
+    .stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem}
+    .stat{
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.06);
+      border-radius:18px;padding:1rem
+    }
+    .stat strong{display:block;font-size:1.7rem;color:var(--accent3);margin-bottom:.24rem}
+    .stat span{color:var(--muted);font-size:.93rem;line-height:1.45}
+    .focus-box{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.07);padding:1.18rem;border-radius:18px
+    }
+    .focus-box h3{margin:0 0 .55rem;font-size:1rem}
+    .focus-box p{margin:0;color:var(--muted);line-height:1.65}
+    .section{padding:1.05rem 0 4rem}
+    .section-head{
+      display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.4rem
+    }
+    .section-head h2{margin:0;font-size:clamp(1.8rem,3vw,2.6rem);letter-spacing:-.03em}
+    .section-head p{margin:0;color:var(--muted);max-width:56ch;line-height:1.75}
+    .accent-line{width:92px;height:4px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent2));margin-bottom:.9rem}
+    .grid-2,.grid-3,.grid-4{display:grid;gap:1rem}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{padding:1.35rem;transition:transform .3s ease,border-color .3s ease}
+    .card:hover{transform:translateY(-6px);border-color:rgba(179,255,243,.22)}
+    .card h3,.card h4{margin:0 0 .7rem;letter-spacing:-.02em}
+    .card p,.card li{margin:0;color:var(--muted);line-height:1.75}
+    .muted{color:var(--muted)}
+    .subtle{font-size:.93rem;color:var(--muted)}
+    .publication-card{display:grid;gap:.55rem;height:100%}
+    .publication-card .journal{color:var(--accent3);font-size:.9rem;font-weight:600}
+    .publication-card .pub-title{font-size:1.1rem;line-height:1.45}
+    .timeline{position:relative;display:grid;gap:1rem}
+    .timeline::before{
+      content:"";position:absolute;top:0;bottom:0;left:1rem;width:2px;
+      background:linear-gradient(180deg, rgba(80,212,182,.7), rgba(106,168,255,.25))
+    }
+    .timeline-item{padding:1.2rem 1.2rem 1.2rem 3rem}
+    .timeline-item::after{
+      content:"";position:absolute;left:.55rem;top:1.35rem;width:.9rem;height:.9rem;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 0 6px rgba(80,212,182,.12)
+    }
+    .meta{display:inline-block;margin-bottom:.5rem;color:var(--accent3);font-size:.84rem;letter-spacing:.03em;text-transform:uppercase}
+    ul.clean{list-style:none;padding:0;margin:0;display:grid;gap:.72rem}
+    ul.clean li{position:relative;padding-left:1.1rem}
+    ul.clean li::before{
+      content:"";position:absolute;left:0;top:.72rem;width:.46rem;height:.46rem;border-radius:50%;
+      background:linear-gradient(135deg,var(--accent),var(--accent2))
+    }
+    .accordion{padding:0}
+    .accordion summary{
+      list-style:none;cursor:pointer;padding:1.1rem 1.2rem;
+      display:flex;justify-content:space-between;align-items:center;gap:1rem;font-weight:700
+    }
+    .accordion summary::-webkit-details-marker{display:none}
+    .accordion summary span{color:var(--muted);font-weight:500;font-size:.95rem}
+    .accordion summary::after{
+      content:"+";font-size:1.45rem;line-height:1;color:var(--accent3);transition:transform .25s ease
+    }
+    .accordion[open] summary::after{content:"−"}
+    .accordion-body{padding:0 1.2rem 1.2rem}
+    .split-list{columns:2;column-gap:1.8rem}
+    .split-list li{break-inside:avoid;margin-bottom:.7rem}
+    .hidden-block{display:none;margin-top:1rem}
+    .hidden-block.show{display:block}
+    .button-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.15rem}
+    .edu-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:1rem}
+    .pill{
+      display:inline-flex;align-items:center;padding:.34rem .62rem;border-radius:999px;
+      background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:.82rem;color:var(--accent3)
+    }
+    .footer{padding:2rem 0 3.2rem;color:var(--muted);text-align:center}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    .fine{font-size:.86rem;color:#9fb7bf}
+    @media (max-width: 1024px){
+      .hero-grid,.grid-4,.edu-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width: 760px){
+      nav{flex-direction:column;align-items:flex-start;padding:.9rem 0}
+      .hero{padding-top:4.3rem}
+      .hero-card,.hero-side,.card,.timeline-item{padding:1.2rem}
+      .timeline-item{padding-left:2.6rem}
+      .section-head{flex-direction:column;align-items:start}
+      .grid-2,.grid-3,.grid-4,.stat-grid{grid-template-columns:1fr}
+      .split-list{columns:1}
+      h1{font-size:clamp(2.35rem,12vw,3.8rem)}
+      .nav-links{justify-content:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a href="#home" class="brand" aria-label="Homepage">
+          <strong>Praveen Khatri</strong>
+          <span>Plant Scientist · Specialized Metabolism · P450 Biology</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#service">Service</a>
+          <a href="#awards">Awards</a>
+          <a href="#conferences">Conferences</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="glass hero-card reveal show">
+          <div class="eyebrow">Plant Scientist • Researcher • Specialized Metabolism</div>
+          <h1><span class="gradient-text">Praveen Khatri</span></h1>
+          <p>
+            I study plant specialized metabolism with a focus on <strong>cytochrome P450 enzymes</strong>,
+            <strong>isoflavonoid and glyceollin biosynthesis</strong>, and the biochemical logic by which plants produce
+            defense metabolites and other bioactive natural products.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#publications">Selected Papers</a>
+            <a class="btn btn-secondary" href="#service">Service & Teaching</a>
+          </div>
+          <div class="tag-row" aria-label="Research tags">
+            <span class="tag">Plant Specialized Metabolism</span>
+            <span class="tag">Cytochrome P450s</span>
+            <span class="tag">Glyceollin Biology</span>
+            <span class="tag">Metabolomics</span>
+            <span class="tag">Natural Product Biosynthesis</span>
+          </div>
+        </div>
+
+        <aside class="glass hero-side reveal">
+          <div class="stat-grid">
+            <div class="stat">
+              <strong>346</strong>
+              <span>Soybean P450s identified in genome-wide analysis</span>
+            </div>
+            <div class="stat">
+              <strong>11</strong>
+              <span>CYP81E family members analyzed in soybean IFH studies</span>
+            </div>
+            <div class="stat">
+              <strong>9</strong>
+              <span>Functional IFH enzymes identified across the family</span>
+            </div>
+            <div class="stat">
+              <strong>3</strong>
+              <span>Mentored trainees across undergraduate, master's, and postdoctoral projects</span>
+            </div>
+          </div>
+          <div class="focus-box">
+            <h3>Current scientific focus</h3>
+            <p>
+              Integrating enzymology, metabolomics, transcriptomics, and pathway discovery to explain how plants organize and control chemically diverse defense systems.
+            </p>
+          </div>
+          <div class="focus-box">
+            <h3>Core strengths</h3>
+            <p>
+              Yeast expression systems, LC–MS/MS, Orbitrap workflows, enzyme assays, molecular cloning, transcriptome-guided candidate discovery, and scientific communication.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h2>About</h2>
+          </div>
+          <p>
+            Plant scientist trained across phytochemistry, biochemistry, molecular biology, and analytical chemistry, with research centered on linking genes to metabolites and pathway function.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card reveal">
+            <h3>Scientific profile</h3>
+            <p>
+              My work connects enzyme function with pathway architecture, metabolite diversity, and plant defense. I combine computational candidate discovery with enzyme characterization and metabolite validation to build mechanistic pathway models in crop and medicinal plant systems.
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3>Research direction</h3>
+            <p>
+              I am interested in how plants evolve specialized metabolic networks, how pathway enzymes are coordinated in space and time, and how these systems can be leveraged for crop protection, metabolic engineering, and discovery of useful natural products.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h2>Research Areas</h2>
+          </div>
+          <p>
+            My work spans enzyme discovery, defense metabolism, transcriptome-guided pathway analysis, and metabolomics-driven characterization of plant natural products.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3>Glyceollin biosynthesis in soybean</h3>
+            <p>
+              I investigated unresolved steps in soybean glyceollin production by integrating multi-transcriptome analysis, coexpression logic, heterologous expression, enzyme assays, and metabolite analysis.
+            </p>
+            <div class="meta-tags">
+              <span class="tag">Soybean defense</span>
+              <span class="tag">Phytoalexins</span>
+              <span class="tag">Pathway discovery</span>
+            </div>
+          </article>
+          <article class="card reveal">
+            <h3>Cytochrome P450 enzymology</h3>
+            <p>
+              A major part of my work focuses on the functional diversification of plant P450s, including CYP73 and CYP81 families, through substrate testing, kinetics, and pathway-context interpretation.
+            </p>
+            <div class="meta-tags">
+              <span class="tag">CYP73</span>
+              <span class="tag">CYP81</span>
+              <span class="tag">Enzyme function</span>
+            </div>
+          </article>
+          <article class="card reveal">
+            <h3>Natural product biosynthesis</h3>
+            <p>
+              I am interested in how complex plant metabolites are assembled, regulated, and diversified, including diterpenoid pathways, candidate discovery, and organization of multi-step biosynthetic systems.
+            </p>
+            <div class="meta-tags">
+              <span class="tag">Biosynthetic logic</span>
+              <span class="tag">Pathway evolution</span>
+              <span class="tag">Metabolic innovation</span>
+            </div>
+          </article>
+          <article class="card reveal">
+            <h3>Metabolomics & analytical chemistry</h3>
+            <p>
+              I routinely use LC–MS/MS, high-resolution mass spectrometry, and targeted biochemical workflows to identify pathway intermediates, validate products, and support structure-based interpretation of enzyme activity.
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3>Transcriptomics & candidate mining</h3>
+            <p>
+              My approach often begins with expression data: transcriptome integration, coexpression analysis, and comparative patterns across cultivars or treatments to prioritize pathway candidates for functional study.
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3>Plant defense metabolism</h3>
+            <p>
+              I study how plants deploy metabolic responses against pathogens, with emphasis on inducible defense metabolites, temporal responses after infection, and biosynthetic regulation under stress.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h2>Publications & Research Outputs</h2>
+          </div>
+          <p>
+            Selected first-author work is shown first. Additional publication categories expand below, including peer-reviewed articles, editorial writing, and reviewing activity.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card publication-card reveal">
+            <div class="journal">First author · Peer reviewed</div>
+            <div class="pub-title"><strong>Cytochrome P450 prenyl cyclases in soybean glyceollin biosynthesis</strong></div>
+            <p>
+              Functional discovery of P450 cyclases associated with the final oxidative cyclization step in soybean glyceollin biosynthesis.
+            </p>
+          </article>
+          <article class="card publication-card reveal">
+            <div class="journal">First author · Peer reviewed</div>
+            <div class="pub-title"><strong>Functional diversification of soybean CYP81E isoflavone hydroxylases</strong></div>
+            <p>
+              Characterization of soybean IFH enzymes, revealing hidden isoflavonoid chemistry and hydroxylation diversity.
+            </p>
+          </article>
+          <article class="card publication-card reveal">
+            <div class="journal">First author · Peer reviewed</div>
+            <div class="pub-title"><strong>The P450 EcCYP89B16 broadens the metabolic landscape of herbicide resistance in barnyardgrass (<em>Echinochloa crus-galli</em>)</strong></div>
+            <p>
+              P450-centered work expanding the metabolic understanding of herbicide resistance in barnyardgrass.
+            </p>
+          </article>
+        </div>
+
+        <div class="button-row reveal">
+          <button class="toggle-btn" type="button" onclick="toggleBlock('all-pubs', this)" data-open="Load more publications" data-close="Show fewer publications">Load more publications</button>
+        </div>
+
+        <div id="all-pubs" class="hidden-block">
+          <div class="grid-2" style="margin-top:1rem;">
+            <details class="accordion reveal">
+              <summary>Peer-reviewed articles <span>Expand the article list</span></summary>
+              <div class="accordion-body">
+                <ul class="clean split-list">
+                  <li><strong>Khatri, P.</strong> et al. Cytochrome P450 prenyl cyclases associated with late glyceollin biosynthesis in soybean.</li>
+                  <li><strong>Khatri, P.</strong> et al. Functional diversification of soybean CYP81E enzymes and hidden hydroxylated isoflavonoid chemistry.</li>
+                  <li><strong>Khatri, P.</strong> et al. The P450 EcCYP89B16 broadens the metabolic landscape of herbicide resistance in barnyardgrass (<em>Echinochloa crus-galli</em>).</li>
+                  <li>Additional peer-reviewed papers from your full CV can be inserted into this expandable list without changing the page design.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion reveal">
+              <summary>Non-peer-reviewed writing & editorial pieces <span>Features, highlights, and scholarly communication</span></summary>
+              <div class="accordion-body">
+                <ul class="clean">
+                  <li>Plant Physiology / ASPB Assistant Features Editor contributions and research highlight writing.</li>
+                  <li>Frontiers in Plant Science co-organizer / co-editor for the research topic <em>Discovery, Function, and Innovation in Plant Specialized Metabolism</em>.</li>
+                  <li>Scientific society communication outputs for PSNA newsletters, social media, and website announcements.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h2>Experience & Education</h2>
+          </div>
+          <p>
+            Research training built around plant metabolism, enzyme discovery, scientific communication, and community engagement.
+          </p>
+        </div>
+
+        <div class="edu-grid">
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <span class="meta">Current</span>
+              <h3>Postdoctoral Fellow · University of Toronto Mississauga</h3>
+              <p>
+                Department of Biology. Research on plant natural product pathways, enzyme discovery, metabolite-focused biochemical analysis, and pathway biology.
+              </p>
+            </div>
+            <div class="timeline-item reveal">
+              <span class="meta">PhD</span>
+              <h3>Western University</h3>
+              <p>
+                PhD research focused on soybean glyceollin biosynthesis, cytochrome P450 identification and characterization, and metabolic responses of soybean roots after <em>Phytophthora sojae</em> infection.
+              </p>
+            </div>
+            <div class="timeline-item reveal">
+              <span class="meta">Research training</span>
+              <h3>Agriculture and Agri-Food Canada · London Research & Development Centre</h3>
+              <p>
+                Training and research experience in plant biochemistry, phytochemistry, metabolomics, and pathway analysis.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid-2" style="grid-template-columns:1fr;gap:1rem;">
+            <article class="card reveal">
+              <h3>Education</h3>
+              <ul class="clean">
+                <li>Postdoctoral research training in plant specialized metabolism</li>
+                <li>PhD in plant science / plant biochemistry</li>
+                <li>Master’s degree in agricultural / plant sciences</li>
+                <li>Bachelor’s degree in life sciences / agriculture</li>
+              </ul>
+            </article>
+            <article class="card reveal">
+              <h3>Selected technical methods</h3>
+              <div class="meta-tags">
+                <span class="tag">Yeast expression</span>
+                <span class="tag">Gateway cloning</span>
+                <span class="tag">qPCR</span>
+                <span class="tag">LC–MS/MS</span>
+                <span class="tag">GC–MS</span>
+                <span class="tag">Orbitrap HRMS</span>
+                <span class="tag">Enzyme assays</span>
+                <span class="tag">Transcriptomics</span>
+                <span class="tag">Phylogenetics</span>
+                <span class="tag">Coexpression analysis</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="service">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h2>Service, Teaching & Professional Activity</h2>
+          </div>
+          <p>
+            Editorial work, journal reviewing, society leadership, mentoring, and teaching activities that complement my research profile.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3>Editorial & scholarly communication</h3>
+            <ul class="clean">
+              <li>Assistant Features Editor for <em>Plant Physiology</em> through the ASPB program.</li>
+              <li>Co-organizer / co-editor of the Frontiers in Plant Science research topic on plant specialized metabolism.</li>
+              <li>Contributions to research communication, newsletter content, and society web content.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Teaching & training</h3>
+            <ul class="clean">
+              <li>Guest lecture on flavonoid analysis and nomenclature in a mass spectrometry course.</li>
+              <li>Assisted undergraduate laboratory teaching during graduate training.</li>
+              <li>Hands-on training in cloning, qPCR, transformation workflows, and analytical interpretation.</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Mentoring</h3>
+            <ul class="clean">
+              <li>Mentoring Master’s student Christina De Melo on Salvia diterpenoid pathway work.</li>
+              <li>Mentoring undergraduate trainee Tianqi Wang in cloning, plasmid prep, PCR, and Synechocystis transformation.</li>
+              <li>Peer mentorship and technical support for postdoctoral research projects in plant metabolism.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="grid-2" style="margin-top:1rem;">
+          <details class="accordion reveal">
+            <summary>Peer-review service <span>Expand journal reviewing activities</span></summary>
+            <div class="accordion-body">
+              <ul class="clean split-list">
+                <li><em>The Plant Journal</em></li>
+                <li>BMC journals</li>
+                <li><em>Plant Direct</em></li>
+                <li>Additional reviewing from your current CV can be added here in the same format.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="accordion reveal">
+            <summary>Society memberships & leadership <span>PSNA, ASPB, community roles</span></summary>
+            <div class="accordion-body">
+              <ul class="clean">
+                <li>Young Members Committee, Phytochemical Society of North America (PSNA).</li>
+                <li>PSNA Young Members Committee Chair (2024–2025 cycle).</li>
+                <li>PSNA Publications Committee involvement.</li>
+                <li>ASPB-affiliated editorial engagement through the Plant Physiology features program.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="awards">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h2>Awards & Recognition</h2>
+          </div>
+          <p>
+            Recognition across graduate research, academic excellence, and scientific travel support.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card reveal">
+            <ul class="clean">
+              <li>Ontario Graduate Scholarship / Queen Elizabeth II Graduate Scholarship</li>
+              <li>Malcolm Ferguson Award for excellence in studies and research contribution</li>
+              <li>Travel Award · 63rd Annual Meeting of the Phytochemical Society of North America</li>
+              <li>Travel Award · Canadian Association for Plant Biotechnology conference</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <ul class="clean">
+              <li>Pass with Distinction in PhD Comprehensive Exam</li>
+              <li>DBT-Junior Research Fellowship</li>
+              <li>National Talent Scholarship</li>
+              <li>State- and national-level academic recognition in India</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="conferences">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h2>Conferences, Talks & Posters</h2>
+          </div>
+          <p>
+            Conference participation includes research presentations, poster contributions, travel-award-supported attendance, and society-organizing activity.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <h3>PSNA 2024 · Monterrey, Mexico</h3>
+            <p>
+              Attended the 63rd Annual Meeting of the Phytochemical Society of North America and contributed through conference-linked leadership and travel-award-supported participation.
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3>CAPB 2022 · Quebec City</h3>
+            <p>
+              Attended the Canadian Association for Plant Biotechnology conference with travel-award support and presented work related to plant metabolism research.
+            </p>
+          </article>
+          <article class="card reveal">
+            <h3>Research talks</h3>
+            <p>
+              Talks and seminar materials have focused on soybean glyceollin biosynthesis, cytochrome P450 discovery, and specialized metabolism.
+            </p>
+          </article>
+        </div>
+
+        <div class="button-row reveal">
+          <button class="toggle-btn" type="button" onclick="toggleBlock('conference-more', this)" data-open="Load more conference activity" data-close="Show fewer conference details">Load more conference activity</button>
+        </div>
+
+        <div id="conference-more" class="hidden-block">
+          <div class="grid-2" style="margin-top:1rem;">
+            <details class="accordion reveal">
+              <summary>Posters & presentation topics <span>Expand research presentation themes</span></summary>
+              <div class="accordion-body">
+                <ul class="clean">
+                  <li>Poster and talk content on soybean glyceollin biosynthesis and P450 discovery.</li>
+                  <li>Presentation theme: <em>From Genome to Glyceollin: Unraveling P450s in Soybean’s Defense Mechanism</em>.</li>
+                  <li>Conference-linked communication and interview activities supporting PSNA programming.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details class="accordion reveal">
+              <summary>Organizing & participation <span>Expand conference-related service</span></summary>
+              <div class="accordion-body">
+                <ul class="clean">
+                  <li>Conference organization and trainee-oriented programming through PSNA leadership roles.</li>
+                  <li>Support for outreach, interviews, and society communication around meeting activities.</li>
+                  <li>Academic judging role for UTM Biology ROP Poster Day.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="accent-line"></div>
+            <h2>Contact</h2>
+          </div>
+          <p>
+            Add your preferred email and profile links before publishing, or keep this section minimal and direct.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card reveal">
+            <h3>Current affiliation</h3>
+            <ul class="clean">
+              <li>Department of Biology</li>
+              <li>University of Toronto Mississauga</li>
+              <li>Mississauga, Ontario, Canada</li>
+              <li>Email: add your preferred academic email</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3>Professional profiles</h3>
+            <div class="button-row">
+              <a class="btn btn-secondary" href="#">Google Scholar</a>
+              <a class="btn btn-secondary" href="#">ORCID</a>
+              <a class="btn btn-secondary" href="#">ResearchGate</a>
+              <a class="btn btn-secondary" href="#">LinkedIn</a>
+            </div>
+            <p class="subtle" style="margin-top:1rem;">
+              Replace # with your profile URLs before publishing.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    © <span id="year"></span> Praveen Khatri · Plant Scientist
+    <div class="fine" style="margin-top:.55rem;">Designed as a compact academic website and research profile.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      if (!el.classList.contains('show')) {
+        el.style.transitionDelay = `${Math.min(i * 40, 220)}ms`;
+      }
+      observer.observe(el);
+    });
+
+    function toggleBlock(id, button){
+      const block = document.getElementById(id);
+      const openText = button.getAttribute('data-open');
+      const closeText = button.getAttribute('data-close');
+      block.classList.toggle('show');
+      button.textContent = block.classList.contains('show') ? closeText : openText;
+    }
+  </script>
+</body>
+</html>
